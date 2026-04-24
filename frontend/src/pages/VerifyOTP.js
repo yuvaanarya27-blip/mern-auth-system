@@ -17,7 +17,7 @@ function VerifyOTP() {
     setError('');
     setMessage('');
     try {
-      const res = await axios.post('http://https://mern-auth-system-k2ci.onrender.com/api/auth/verify-otp', { email, otp });
+      const res = await axios.post('https://mern-auth-system-k2ci.onrender.com/api/auth/verify-otp', { email, otp });
       setMessage(res.data.message);
       setTimeout(() => navigate('/'), 2000);
     } catch (err) {

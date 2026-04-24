@@ -22,7 +22,7 @@ function Register() {
     setError('');
     setMessage('');
     try {
-      const res = await axios.post('http://https://mern-auth-system-k2ci.onrender.com/api/auth/register', formData);
+      const res = await axios.post('https://mern-auth-system-k2ci.onrender.com/api/auth/register', formData);
       setMessage(res.data.message);
       setTimeout(() => navigate('/verify-otp', { state: { email: formData.email } }), 2000);
     } catch (err) {

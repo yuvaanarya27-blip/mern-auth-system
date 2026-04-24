@@ -17,7 +17,7 @@ function ResetPassword() {
     setError('');
     setMessage('');
     try {
-      const res = await axios.post('http://https://mern-auth-system-k2ci.onrender.com/api/auth/reset-password', { email, ...formData });
+      const res = await axios.post('https://mern-auth-system-k2ci.onrender.com/api/auth/reset-password', { email, ...formData });
       setMessage(res.data.message);
       setTimeout(() => navigate('/'), 2000);
     } catch (err) {
