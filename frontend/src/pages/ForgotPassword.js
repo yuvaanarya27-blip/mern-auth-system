@@ -14,15 +14,22 @@ function ForgotPassword() {
     setLoading(true);
     setError('');
     setMessage('');
-    try {
-      const res = await axios.post('https://mern-auth-system-k2ci.onrender.com/api/auth/forgot-password', { email });
-      setMessage(res.data.message);
-      setTimeout(() => navigate('/reset-password', { state: { email } }), 2000);
+   try {
+      const res = await axios.post(
+        `${process.env.REACT_APP_API_URL}/api/auth/register`,
+        formData
+      );
+
+      localStorage.setItem('token', res.data.token);
+      localStorage.setItem('user', JSON.stringify(res.data.user));
+
+      navigate('/dashboard');
     } catch (err) {
-      setError(err.response?.data?.message || 'Something went wrong');
+      setError(err.response?.data?.message || 'Registration failed');
     }
+
     setLoading(false);
-  };
+  }
 
   return (
     <div style={{minHeight:'100vh', background:'linear-gradient(135deg, #fa709a 0%, #fee140 100%)'}} className="flex items-center justify-center p-4">

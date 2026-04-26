@@ -22,7 +22,7 @@ function Register() {
     setError('');
     setMessage('');
     try {
-      const res = await axios.post('https://mern-auth-system-k2ci.onrender.com/api/auth/register', formData);
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/forgot-password`, formData);
       setMessage(res.data.message);
       setTimeout(() => navigate('/verify-otp', { state: { email: formData.email } }), 2000);
     } catch (err) {

@@ -12,20 +12,24 @@ function Login() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError('');
-    try {
-      const res = await axios.post('https://mern-auth-system-k2ci.onrender.com/api/auth/login', formData);
-      localStorage.setItem('token', res.data.token);
-      localStorage.setItem('user', JSON.stringify(res.data.user));
-      navigate('/dashboard');
-    } catch (err) {
-      setError(err.response?.data?.message || 'Something went wrong');
-    }
-    setLoading(false);
-  };
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+  setError('');
+  try {
+    const res = await axios.post(
+      `${process.env.REACT_APP_API_URL}/api/auth/login`,
+      formData
+    );
+
+    localStorage.setItem('token', res.data.token);
+    localStorage.setItem('user', JSON.stringify(res.data.user));
+    navigate('/dashboard');
+  } catch (err) {
+    setError(err.response?.data?.message || 'Something went wrong');
+  }
+  setLoading(false);
+};
 
   return (
     <div style={{minHeight:'100vh', background:'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'}} className="flex items-center justify-center p-4">
