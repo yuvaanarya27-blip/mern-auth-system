@@ -14,13 +14,10 @@ connectDB();
 
 // Middleware
 app.use(cors({
-  origin: [
-    "https://mern-auth-system-six.vercel.app",
-    "https://mern-auth-system-git-main-yuvaanarya27-6746s-projects.vercel.app",
-    /\.vercel\.app$/  // saare vercel URLs allow karo
-  ],
+  origin: "https://mern-auth-system-nw94z3q60-yuvaanarya27-6746s-projects.vercel.app", 
   credentials: true
 }));
+
 app.use(express.json());
 
 // Routes
