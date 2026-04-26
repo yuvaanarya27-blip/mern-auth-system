@@ -1,11 +1,8 @@
 require('dotenv').config();
 const express = require('express');
-const dotenv = require('dotenv');
 const cors = require('cors');
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
-
-dotenv.config();
 
 const app = express();
 
@@ -13,10 +10,16 @@ const app = express();
 connectDB();
 
 // Middleware
-app.use(cors({
-  origin: "https://mern-auth-system-nw94z3q60-yuvaanarya27-6746s-projects.vercel.app", 
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: [
+      "http://localhost:3000",
+      "http://localhost:5173",
+      "https://mern-auth-system-six.vercel.app"
+    ],
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 
