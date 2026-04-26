@@ -15,6 +15,7 @@ app.use(
     origin: [
       "http://localhost:3000",
       "http://localhost:5173",
+      "https://mern-auth-system-nw94z3q60-yuvaanarya27-6746s-projects.vercel.app",
       "https://mern-auth-system-six.vercel.app"
     ],
     credentials: true,
